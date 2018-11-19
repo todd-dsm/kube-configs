@@ -1,0 +1,3 @@
+
+kubectl create configmap game-config-2 --from-file=cm-from/files/game.properties
+

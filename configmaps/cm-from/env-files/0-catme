@@ -1,0 +1,7 @@
+
+kubectl create configmap game-config-env-file \
+    --from-env-file=cm-from/env-files/game-env-file.properties
+
+kubectl get configmap game-config-env-file -o yaml
+
+

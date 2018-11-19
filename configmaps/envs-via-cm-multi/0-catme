@@ -1,0 +1,7 @@
+
+kubectl delete cm special-config env-config
+
+kubectl create configmap special-config --from-literal=special.how=very
+kubectl create configmap env-config --from-literal=log_level=INFO
+
+kubectl logs test-pod | grep -E '^(LOG_LEVEL|SPECIAL_LEVEL_KEY)'
