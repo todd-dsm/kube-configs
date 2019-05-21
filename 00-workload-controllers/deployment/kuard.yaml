@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kuard
+  name: kuard
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      labels:
+        app: kuard
+    spec:
+      containers:
+      - image: gcr.io/kuar-demo/kuard-amd64:1
+        name: kuard
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuard
+  annotations:                                                                     
+    external-dns.alpha.kubernetes.io/hostname: kuard.yo.opcon.dev.
+spec:
+  selector:
+    app: kuard
+  ports:
+  - port: 80
+    targetPort: 8080
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  backend:
+    serviceName: kuard
+    servicePort: 80
