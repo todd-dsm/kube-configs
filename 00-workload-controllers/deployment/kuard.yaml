@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: kuard
   annotations:                                                                     
-    external-dns.alpha.kubernetes.io/hostname: kuard.yo.opcon.dev.
+    external-dns.alpha.kubernetes.io/hostname: kuard.opcon.dev.
 spec:
   selector:
     app: kuard
@@ -32,14 +32,3 @@ spec:
     targetPort: 8080
   sessionAffinity: None
   type: LoadBalancer
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: kuard
-  labels:
-    app: kuard
-spec:
-  backend:
-    serviceName: kuard
-    servicePort: 80
