@@ -2,6 +2,9 @@
 
 various kubernetes concepts - straight outta documentation
 
+`cd ~/code/kube-configs`
+
+
 ## preamble
 
 Kubernetes is like any other _popular_ opensource project: things move quickly, docs quickly go stale and examples like these change over time.
